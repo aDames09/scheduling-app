@@ -1,0 +1,239 @@
+{#
+ #----------------
+ # Base template
+ # ---------------
+ #}
+
+{# Tell the browser to cache this page for 30 days
+{% set expiry = now|date_modify('+30 days') %}
+
+{% header "Cache-Control: max-age=" ~ expiry.timestamp %}
+{% header "Pragma: cache" %}
+{% header "Expires: " ~ expiry|date('D, d M Y H:i:s', 'GMT') ~ " GMT"%}
+#}
+
+{% minify %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="home" href="{{ siteUrl }}" />
+
+
+	{% if entry is not defined %}
+		<meta name="robots" content="noindex">
+	{% endif %}
+
+	{% hook "seo" %}
+
+	<link rel="shortcut icon" type="image/x-icon" href="{{ siteUrl }}favicon.ico">
+
+	<link rel="preconnect" href="//www.google-analytics.com">
+
+
+	<!--[if lte IE 9]>
+		<script src="{{ siteUrl }}js/polyfills/html5.js"></script>
+		<script src="{{ siteUrl }}js/jsSrc/plugins/lazysizes.js"></script>
+	<![endif]-->
+
+	<link rel="stylesheet" href="{{ siteUrl }}css/style.css" type="text/css"  />
+
+	<script>
+		{% include 'js/loadjs.js' %}
+
+		if(typeof(document.querySelectorAll) != 'undefined'){
+			var ready = false;
+			document.addEventListener("DOMContentLoaded", function(event) {
+				init("DOMContentLoaded");
+			});
+			document.onreadystatechange = function () { init("onreadystatechange"); }
+			document.addEventListener("load", function(event) { init("load"); });
+			function init(method) {
+				if(!ready) {
+					ready = true;
+					loadJS( "{{ siteUrl }}js/global.min.js" );
+				}
+			}
+
+		}
+
+		//Fix for Windows 8
+		if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+			var msViewportStyle = document.createElement("style");
+			msViewportStyle.appendChild(
+				document.createTextNode(
+					"@-ms-viewport{width:auto!important}"
+				)
+			);
+			document.getElementsByTagName("head")[0].
+				appendChild(msViewportStyle);
+		}
+
+		//Picture element
+		if(!window.HTMLPictureElement){
+			document.createElement('picture');
+			loadJS("{{ siteUrl }}js/polyfills/respimage.js");
+		}
+
+	</script>
+
+	{% if globalContent.googleAnalyticsId != "" %}
+		<script async src="https://www.googletagmanager.com/gtag/js?id={{	globalContent.googleAnalyticsId }}" data-cookieconsent="statistics" ></script>
+		<script data-cookieconsent="statistics" >
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', '{{ globalContent.googleAnalyticsId }}');
+		</script>
+	{% endif %}
+
+
+</head>
+
+{% set classes = "" %}
+
+{% if craft.cookies.get('nav-site') %}
+	{% set classes = classes ~ "navigation-enabled " %}
+{% endif %}
+
+{% if craft.cookies.get('animate-site') %}
+	{% set classes = classes ~ "animate-enabled " %}
+{% endif %}
+
+{% if craft.cookies.get('fonts-site') %}
+	{% set classes = classes ~ "font-loaded " %}
+{% endif %}
+
+
+<body class='{{ classes }}' >
+
+
+	<div class="tabhint"><a href="#content" id="navigation">Jump to Content</a></div>
+
+	<header class="siteheader">
+		<h1 class="title">
+			<a href="{{ siteUrl }}" title="{{ siteName }}" rel="home" class="title_link">
+				{% if craft.rebrand.logo is not null %}
+					<img src="{{ craft.rebrand.logo.url }}" alt="{{ siteName }}" class="title_logo" />
+				{% else %}
+					{{ siteName }}
+				{% endif %}
+			</a>
+		</h1>
+
+		<nav class="nav-primary">
+			<ul class="nav-primary_list">
+				{% set entries = craft.entries.section('navigation').all() %}
+				{% nav entry in entries %}
+			        <li class="nav-primary_item" >
+			            <a href="{{ entry.navigationLink }}" class="nav-primary_link">{{ entry.title }}</a>
+			            {% ifchildren %}
+			                <ul class="nav-primary_list-sub">
+					           	{% children %}
+					        </ul>
+			            {% endifchildren %}
+			        </li>
+			    {% endnav %}
+			</ul>
+		</nav>
+
+	</header>
+
+	<div class="tabhint"><a href="#navigation" id="content">Back to Navigation</a></div>
+
+
+	<main>{% block content %}{% endblock %}</main>
+
+
+	<footer class="footer">
+
+		<section class="footer_content">
+
+			<nav class="footer_col sitemap">
+				<ul class="sitemap_list">
+
+					{% set entries = craft.entries.section('navigation').all() %}
+					{% nav entry in entries %}
+				        <li class="sitemap_item" >
+				            <a href="{{ entry.navigationLink }}" class="sitemap_link">{{ entry.title }}</a>
+				            {% ifchildren %}
+				                <ul class="sitemap_list-sub">
+						           	{% children %}
+						        </ul>
+				            {% endifchildren %}
+				        </li>
+				    {% endnav %}
+
+				</ul>
+			</nav>
+
+			<div class="footer_col footer_contact">
+				<h3>Contact Us</h3>
+
+				<div>
+					<div><a href="mailto:{{ globalContent.email }}">{{ globalContent.email }}</a></div>
+					<br/>
+					<div>{{ globalContent.phoneNumber }}</div>
+					<br/>
+					<address>
+						{% for block in globalContent.address %}
+							{{ block.addressLine }} <br/>
+						{% endfor %}
+					</address>
+				</div>
+			</div>
+			<div class="footer_col footer_social">
+				<h3>Connect with Us</h3>
+				<div class="social">
+					{% set sM = globalContent.socialMedia.all() %}
+					{% for s in sM %}
+						<a href="{{ s.networkLink }}" class="social_link"><img src="{{ s.networkIcon.one().getUrl() }}" alt="{{ s.networkName }}" class="social_icon"></a>
+					{% endfor %}
+				</div>
+			</div>
+
+		</section>
+		<section class="footer_legal">
+			<div class="copyright">
+				&copy;{{ now|date('Y') }} {{ globalContent.copyrightInformation }}
+			</div>
+			<nav class="legal">
+				{% set entries = craft.entries.section('legal').all() %}
+				{% nav entry in entries %}
+				    <a class="legal_link" href="{{ entry.url }}">{{ entry.title }}</a>
+				{% endnav %}
+			</nav>
+		</section>
+
+	</footer>
+
+{% if craft.cookies.get('fonts-site') == "" %}
+
+	<script type="text/javascript">
+	   {% include 'js/cookie.js' %}
+	   {% include 'js/fonts.js' %}
+
+	   var observer = new FontFaceObserver("Calibri", {
+		  weight: 300
+		});
+		observer.load().then(function () {
+			document.getElementsByTagName('body')[0].className += " font-loaded";
+			cookie( 'fonts-site', "true", 7 );
+		});
+
+	</script>
+
+{% endif %}
+
+</body>
+</html>
+
+{% endminify %}

@@ -1,0 +1,18 @@
+{% if image.getExtension() != "svg" %}
+<picture>
+    <!--[if IE 9]><video style="display: none"><![endif]-->
+    
+    <source {{ lazyAttr }}srcset="{{ craft.imager.transformImage( image, { width: 400, height: 400 } ).url }}" media="(max-width: 400px)" />
+
+    <source {{ lazyAttr }}srcset="{{ craft.imager.transformImage( image, { width: 800, height: 600 } ).url }}" media="(max-width: 800px)" />
+
+    <source {{ lazyAttr }}srcset="{{ craft.imager.transformImage( image, { width: 1200, height: 500 } ).url }}" media="(max-width: 1200px)" />
+
+    <source {{ lazyAttr }}srcset="{{ craft.imager.transformImage( image, { width: 1900, height: 790 } ).url }}" />
+
+    <!--[if IE 9]></video><![endif]-->
+    <img {{ lazyAttr }}src="{{ craft.imager.transformImage( image, { width: 800, height: 600 } ).url }}" alt="{{ image.title }}"  class="{{ lazyClass }} {{ imgClass }}" >
+</picture>
+{% else %}
+<img {{ lazyAttr }}src="{{ image.getUrl() }}" alt="{{ image.title }}" class="{{ lazyClass }}">
+{% endif %}

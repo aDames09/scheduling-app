@@ -1,0 +1,61 @@
+{% requirePermission viewReportsPermission %}
+
+{% extends "sprout-base-reports/_layouts/elementindex" %}
+
+{% set title  = "Reports"|t('sprout-base-reports') %}
+{% set elementType = 'barrelstrength\\sproutbasereports\\elements\\Report' %}
+
+{% block actionButton %}
+
+    {% if currentUser.can(editReportsPermission) %}
+
+        {% if newReportOptions|length > 1 %}
+            <div class="btngroup submit first">
+                <a class="btn submit add icon"
+                   href="{{ newReportOptions[0].url }}">{{ "New Report"|t('sprout-base-reports') }}</a>
+                {% if dataSources %}
+                    <div class="btn submit menubtn"></div>
+                    <div class="menu">
+                        <ul>
+                            {% for option in newReportOptions %}
+                                <li><a class="formsubmit"
+                                       href="{{ option.url }}">{{ option.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="btngroup submit first">
+                {% if newReportOptions[0] is defined %}
+                    <a class="btn submit add icon" href="{{ newReportOptions[0].url }}">{{ "New Report"|t('sprout-base-reports') }}</a>
+                {% endif %}
+            </div>
+        {% endif %}
+
+    {% endif %}
+
+{% endblock %}
+
+{% block initJs %}
+    // Pass segment to the NotificationEmailQuery class to filter notification entries
+    var params = {'pluginHandle': '{{ craft.app.request.getSegment(1) }}'};
+    var criteria = Craft.defaultIndexCriteria;
+
+    {# Only apply these values on a plugin integration. We will use the default values above
+       in Sprout Email so the Source filtering works as expected. #}
+    if (params.pluginHandle !== 'sprout-reports') {
+        criteria = $.extend({}, Craft.defaultIndexCriteria);
+        criteria.pluginHandle = params.pluginHandle;
+    }
+
+    Craft.elementIndex = Craft.createElementIndex('{{ elementType|e("js") }}', $('#main'), {
+        context:        '{{ context }}',
+        storageKey:     'elementindex.{{ elementType|e("js") }}',
+        criteria:       criteria,
+        hideSidebar:    '{{ hideSidebar ?? false }}'
+    });
+
+    $('#main-content').removeClass('has-sidebar');
+{% endblock %}

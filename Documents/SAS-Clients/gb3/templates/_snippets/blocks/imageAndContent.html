@@ -1,0 +1,54 @@
+{% set title = block.icpTitle %}
+{% set image = block.icpImage.one() %}
+{% set content = block.icpContent %}
+
+{% set position = block.icpPositionOfImage %}
+{% set theme = block.icpTheme %}
+{% set animation = block.icpAnimationStyle %}
+
+{% set animationClass = "" %}
+
+{% if animation != "none" %}
+	{% if animation == "fadeIn" %}
+		{% if position == "right" %}
+			{% set animationClass = 'data-aos=fade-left' %}
+		{% elseif position == "left" %}
+			{% set animationClass = 'data-aos=fade-right' %}
+		{% else %}
+			{% set animationClass = 'data-aos=fade' %}
+		{% endif %}
+	{% else %}
+		{% set animationClass = 'data-aos=fade-up' %}
+	{% endif %}
+{% endif %}
+
+
+<section class="icp_section icp-{{ position }} icp-{{ theme }} ">
+
+	<div class="l-container icp_inner icp-{{ position }}_inner">
+
+		<div class="icp_imgcon icp-{{ position }}_imgcon" {{ animationClass }}>
+			<div>
+				{% include "_snippets/image/standard" %}
+			</div>
+		</div>
+
+		<div class="icp_content icp-{{ position }}_content" {{ animationClass }}>
+
+			{% if title %}
+				<h2 class="icp_title icp-{{ position }}_title" >{{ title }}</h2>
+			{% endif %}
+
+			<div>
+
+				{{ content }}
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+
+</section>

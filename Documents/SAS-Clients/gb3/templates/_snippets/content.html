@@ -1,0 +1,32 @@
+{#
+#----------------
+# Content block template
+# ---------------
+#}
+
+{% set first = true %}
+
+{% set options = entry.contentOptions.all() %} 	
+
+{% for block in options %}   
+
+	{# GLOBAL BLOCK VARS #}
+		
+	{% if first %}
+		{% set first = false %}
+		{% set lazyAttr = "" %}
+		{% set lazyClass = "" %}
+	{% else %}
+		{% set lazyAttr = 'data-' %}
+		{% set lazyClass = "lazyload" %}
+	{% endif %}
+
+	{# / END GLOBAL BLOCK VARS #}
+
+	{% if block.type %}
+			
+		{% include "_snippets/blocks/#{block.type}" ignore missing %}
+
+	{% endif %}
+	
+{% endfor %}

@@ -1,0 +1,173 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Content Enhanced
+
+File Purpose: Classes for the content elements
+
+File Notes:
+
+*********/
+
+
+/*-------------------------*\
+  #Hero
+\*-------------------------*/
+
+.hero {
+	color: $c-highlight-2;
+	padding: $s-l $s-xs;
+	overflow: hidden;
+
+	&_content {
+		letter-spacing: 0.05em;
+		width: $hundred;
+		padding: 0 $s-xs;
+	}
+
+
+	&-center {
+		text-align: center;
+		.hero_content {
+			max-width: 40em;
+			width: $hundred;
+			margin: 0 auto;
+		}
+	}
+
+	&-left {
+		.hero_content {
+			max-width: $maxwidth;
+		}
+	}
+
+	&_img {
+		width: $hundred;
+	}
+
+	&_blurb {
+		margin-bottom: $s-xxs;
+	}
+
+	&-dark {
+		color: $c-background;
+		background: $c-highlight-1;
+		@include antialias;
+	}
+
+
+}
+
+
+
+
+
+
+/*-------------------------*\
+  #ICP
+\*-------------------------*/
+
+.icp {
+
+	&_section {
+		padding: $s-l $s-xs;
+	}
+
+	&_title {
+		line-height: 1.2;
+		margin-bottom: $s-xxs;
+	}
+
+	&_img {
+		width: $hundred;
+		max-width: 600px;
+	}
+
+	&_imgcon {
+		text-align: center;
+		margin-bottom: $s-xs;
+	}
+
+	&-above {
+		text-align: center;
+		.icp_inner {
+			max-width: 40em;
+			margin: 0 auto;
+		}
+	}
+
+	&-dark {
+		color: $c-background;
+		background: $c-highlight-1;
+		@include antialias;
+	}
+
+}
+
+
+
+
+
+
+/*-------------------------*\
+  #Content
+\*-------------------------*/
+
+.content {
+	padding: $s-l $s-xs;
+
+	&-dark {
+		color: $c-background;
+		background: $c-highlight-1;
+		@include antialias;
+	}
+}
+
+
+
+
+
+
+/*-------------------------*\
+  #Columns
+\*-------------------------*/
+
+.column {
+	padding: 0 $s-xs;
+	margin: $s-s auto;
+	max-width: 22em;
+
+	&s {
+		&_inner {
+			padding: $s-l $s-xs;
+			margin: 0 auto;
+			max-width: $maxwidth;
+		}
+
+		&_title {
+			margin-bottom: 0;
+		}
+
+		&-dark {
+			color: $c-background;
+			background: $c-highlight-1;
+			@include antialias;
+		}
+	}
+
+	&_img {
+		margin-bottom: $s-xs;
+	}
+
+}
+
+
+/*-------------------------*\
+  #404
+\*-------------------------*/
+
+.error_p {
+	padding: $s-l $s-xs;
+	margin: 0 auto;
+}

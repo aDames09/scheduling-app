@@ -1,0 +1,143 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Form (Safe Styles)
+
+File Purpose: Basic styles for Forms
+
+File Notes:
+
+*********/
+
+/*-------------------------*\
+	#Form-Containers
+\*-------------------------*/
+
+.form_container {
+	padding: $s-l $s-xs;
+}
+
+fieldset {
+	border: none;
+	margin: $s-xs 0;
+	clear: both;
+	overflow: hidden;
+}
+
+label {
+	font-size: $small;
+	text-transform: uppercase;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Inputs-Textarea-Selects
+\*-------------------------*/
+
+input, textarea, select {
+	color: $c-primary;
+	font-size: $body;
+	border: 1px $c-primary solid;
+	padding: $s-xxs;
+	outline: none;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Inputs
+\*-------------------------*/
+
+input {
+	line-height: normal;
+
+	&:focus{
+		color: $c-highlight-1;
+	}
+}
+
+
+
+
+
+
+/*-------------------------*\
+	#Selects
+\*-------------------------*/
+
+select {
+	text-transform: none;
+}
+
+
+
+
+
+
+/*-------------------------*\
+	#Checkboxes-Radiobuttons
+\*-------------------------*/
+
+input[type="checkbox"], input[type="radio"] {
+	padding: 0;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Special-Inputs
+\*-------------------------*/
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+input[type="search"] {
+	-webkit-appearance: textfield;
+}
+
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+
+
+
+
+/*-------------------------*\
+  #Buttons
+\*-------------------------*/
+
+
+button {
+	-webkit-appearance: button;
+	cursor: pointer;
+	overflow: visible;
+}
+
+
+
+input[type="submit"], button {
+	text-transform: uppercase;
+	text-align: center;
+	background: none;
+	cursor: pointer;
+}
+
+
+.search {
+
+	&_form {
+		margin: 0 auto $s-l;
+	}
+
+}

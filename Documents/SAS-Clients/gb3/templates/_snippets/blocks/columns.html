@@ -1,0 +1,71 @@
+{% set title = block.columnsTitle %}
+{% set columns = block.columns.all() %}
+{% set count = block.columnCount %}
+{% set theme = block.columnsTheme %}
+{% set animation = block.columnsAnimationStyle %}
+
+{% set animationClass = "" %}
+
+{% if animation != "none" %}
+	{% if animation == "fadeIn"%}
+		{% set animationClass = 'data-aos=fade-left' %}
+	{% elseif animation == "fadeUp" %}
+		{% set animationClass = 'data-aos=fade-up' %}
+	{% else %}
+		{% set animationClass = 'data-aos=fade' %}
+	{% endif %}
+{% endif %}
+
+{% set col = "" %}
+
+{% if count == '3' %}
+	{% set col = "thrd" %}
+{% elseif count == '4' %}
+	{% set col = "qtr" %}
+{% endif %}
+
+<section class="columns_container h-center columns-{{ theme }}">
+
+	{% if title %}
+		<h2 class="columns_title">{{ title }}</h2>
+	{% endif %}
+
+	<div class="columns_inner">
+
+		{% for column in columns %}
+
+			{% set columntitle = column.columnTitle %}
+			{% set content = column.columnContent %}
+			{% set image = column.columnIcon.one() %}
+			{% set link = column.columnLink %}
+			{% set linkText = column.columnLink.getText() %}
+
+
+			<div class="column_col column_col-{{ col }}"{{ animationClass }}>
+
+				<div class="column">
+					{% if image %}
+						<img {{ lazyAttr }}src="{{ image.getUrl() }}" alt="{{ image.title }}" class="column_img {{ lazyClass }}">
+					{% endif %}
+					
+					{% if columntitle %}
+						<h3 class="column_title">{{ columntitle }}</h3>
+					{% endif %}
+					
+					{% if content %}
+						<p class="column_content">{{ content }}</p>
+					{% endif %}
+					
+					{% if link != "" %}
+					    <div><a class="btn column_btn" href="{{ link }}" target="{{ link.getTarget() }}">{{ linkText }}</a></div>
+					{% endif %}
+
+				</div>
+
+			</div>
+
+		{% endfor %}
+
+	</div>
+
+</section>

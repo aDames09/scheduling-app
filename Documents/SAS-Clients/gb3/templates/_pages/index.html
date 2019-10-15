@@ -1,0 +1,22 @@
+{#
+ # Base page template
+ # ---------------
+ #}
+
+{% extends "_base" %}
+
+{% block content %}
+
+	{% include "_snippets/header.html" with {
+		'title' : entry.title,
+		'customTitle' : entry.customTitle,
+		'blurb' : entry.blurb,
+		'alignment' : entry.alignment,
+		'image' : entry.featuredImage.one(),
+		'theme' : entry.headerTheme
+	} %}
+	
+	{% include "_pages/" ~ entry.type ~ ".html" %}
+
+
+{% endblock %}

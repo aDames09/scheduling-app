@@ -1,0 +1,135 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Responsive Layout
+
+File Purpose: Responsive Layout
+
+File Notes:
+- The Siren base is now focused on implementing layout on the object level
+- This file will remain as an example of setting up custom grids
+
+*********/
+
+@media only screen and (min-width: 600px) {
+
+	/*-------------------------*\
+		#Container
+	\*-------------------------*/
+
+	.l-flex {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+
+		&-reverse {
+			flex-direction: row-reverse;
+		}
+
+		&_col {
+			padding-right: $s-xs;
+			padding-left: $s-xs;
+
+			&-hlf, &-qtr, &-thrqtr {
+				width: $hundred/2;
+			}
+
+			&-thrd, &-ffth, &-sxth {
+				width: $hundred/3;
+			}
+
+		}
+	}
+
+
+}
+
+
+
+
+
+@media only screen and (min-width: 850px) {
+
+	/*-------------------------*\
+		#Container
+	\*-------------------------*/
+
+
+	.l-flex {
+
+		&-l {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+
+			&_col {
+
+				&-thrqtr {
+					width: 75%;
+				}
+
+				&-qtr {
+					width: 25%;
+				}
+
+			}
+
+		}
+
+
+		&_col {
+
+			&-qtr {
+				width: $hundred/4;
+			}
+
+		}
+	}
+
+
+}
+
+
+
+
+
+@media only screen and (min-width: 1100px) {
+
+	/*-------------------------*\
+		#Container
+	\*-------------------------*/
+
+
+	.l-flex_col {
+
+		&-ffth {
+			width: $hundred/5;
+		}
+
+	}
+
+
+}
+
+
+
+
+
+@media only screen and (min-width: 1200px) {
+
+	/*-------------------------*\
+		#Container
+	\*-------------------------*/
+
+
+	.l-flex_col {
+
+		&-sxth {
+			width: $hundred/6;
+		}
+
+	}
+
+
+}

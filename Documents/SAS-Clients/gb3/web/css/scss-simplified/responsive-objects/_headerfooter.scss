@@ -1,0 +1,221 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Responsive for the Header and Footer
+
+File Purpose: Media query calls go here for the header and footer
+
+File Notes:
+
+
+*********/
+
+
+@media only screen and (min-width: 600px) {
+
+
+	/*-------------------------*\
+	  #Header
+	\*-------------------------*/
+
+	.navigation-enabled {
+		padding-top: $s-xxxl;
+	}
+
+	.siteheader {
+		padding-bottom: $s-xs;
+		overflow: visible;	
+		width: $hundred;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+
+		.navigation-enabled &.s-active {
+			box-shadow: $bs-middle;
+			z-index: 10000000000;
+			transition: box-shadow 2s;
+
+			.title {
+				transition: width 0.5s;
+			}
+		}
+	}
+
+	.title{
+		max-width: $hundred ;
+		text-align: center;
+	}
+
+
+
+
+
+	/*-------------------------*\
+	  #Navigation
+	\*-------------------------*/
+
+	.nav-primary {
+		background: none;
+		overflow: visible;
+
+		.navigation-enabled & {
+			max-height: $hundred !important;
+		}
+
+		&_list {
+			text-align: center;
+			padding: 0;
+			overflow: visible;
+		}
+
+		li {
+			font-size: $small;
+			text-transform: uppercase;
+			border: none;
+			display: inline-block;
+			position: relative;
+
+			ul {
+				text-align: left;
+				background: $c-secondary;
+				width: 10em;
+				position: absolute;
+				top: 2.25em;
+				left: $s-xs;
+				z-index: 100;
+				display: none;
+			}
+
+			li {
+				display: block;
+				padding: 0;
+
+				a {
+					font-weight: 400;
+					padding: $s-xs!important;
+					display: block;
+
+					&:hover {
+						color: $c-highlight-1;
+						background: none;
+					}
+				}
+			}
+
+			&:hover, &:focus {
+				color: $c-highlight-1;
+
+				ul {
+					display: block;
+				}
+			}
+		}
+
+		a {
+			color: $c-highlight-2;
+			width: auto;
+			padding: $s-xxs;
+
+			&:hover, &:focus {
+				color: $c-highlight-1;
+				background: none;
+			}
+		}
+
+
+		&_btn{
+			display: none;
+		}
+
+	}
+
+
+
+
+
+	/*-------------------------*\
+	  #Footer
+	\*-------------------------*/
+
+	.footer {
+
+		&_content {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+
+		&_col {
+			border: none;
+		}
+
+
+	}
+
+}
+
+
+@media only screen and (min-width: 800px) {
+
+
+	/*-------------------------*\
+	  	#Header
+	\*-------------------------*/
+
+	.siteheader {
+		padding: $s-xs;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.title {
+		padding: 0;
+	}
+
+
+
+
+
+	/*-------------------------*\
+		#Navigation
+	\*-------------------------*/
+
+	.nav-primary {
+
+		li {
+
+			ul {
+				left: auto;
+				right: 0;
+			}
+
+		}
+	}
+
+}
+
+
+@media only screen and (min-width: $maxwidth)  {
+
+
+	/*-------------------------*\
+		#Navigation
+	\*-------------------------*/
+
+	.nav-primary {
+
+		li {
+
+			ul {
+				left: $s-xs;
+				right: auto;
+			}
+
+		}
+	}
+
+
+}

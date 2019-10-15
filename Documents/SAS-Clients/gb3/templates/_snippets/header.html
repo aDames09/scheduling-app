@@ -1,0 +1,33 @@
+{#
+# Hero template
+# ---------------
+#}
+
+{% set imageClass = "" %}
+{% set id = "hero" %}
+
+{% if image  %}
+	{% set imageClass = "hero-bgimage" %}
+	{% include "_snippets/image/background" %}
+{% endif %}
+
+
+<section class="hero {{ imageClass }} hero-{{ alignment }} hero-{{ theme }}" id="{{id}}">
+	<div class="hero_inner hero-{{ alignment }}_inner">
+
+		<div class="hero_content hero-{{ alignment }}_content">
+			
+			{% if customTitle %}
+				<h1 class="hero_title">{{ customTitle }}</h1>
+			{% else %}
+				<h1 class="hero_title">{{ title }}</h1>
+			{% endif %}
+
+			{% if blurb %}
+				<p class="hero_blurb hero-{{ alignment }}_blurb">{{ blurb }}</p>
+			{% endif %}
+		</div>
+
+	</div>
+	
+</section>

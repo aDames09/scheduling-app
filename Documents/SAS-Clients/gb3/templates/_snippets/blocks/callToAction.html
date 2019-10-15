@@ -1,0 +1,38 @@
+{% set title = block.ctaTitle %}
+{% set text = block.ctaText %}
+{% set link = block.ctaLink %}
+{% set linkText = block.ctaLink.getText() %}
+{% set alignment = block.ctaContentAlignment %}
+{% set theme = block.ctaTheme %}
+
+{% set image = block.ctaBackgroundImage.one() %}
+
+{% set id = linkText|replace({' ':''})|replace({'&':''})|replace({',':''}) %}
+{% set imageClass = "" %}
+
+{% if image  %}
+	{% set imageClass = "cta-bgimage" %}
+	{% include "_snippets/image/background" %}
+{% endif %}
+
+<section class="cta {{ imageClass }} h-{{ alignment }} cta-{{ theme }}" id="{{id}}">
+	
+	<a href="{{ link }}" class="cta_link" target="{{ link.getTarget() }}">
+
+		<div class="cta_inner">
+
+			{% if title %}
+				<h2 class="cta_title">{{ title }}</h2>
+			{% endif %}
+
+			{% if text %}
+				<p class="cta_content">{{ text }}</p>
+			{% endif %}
+
+			<div class="cta_btn">{{ linkText }}</div>
+
+		</div>
+		
+	</a>
+				
+</section>

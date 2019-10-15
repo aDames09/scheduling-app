@@ -1,0 +1,119 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Content Enhanced
+
+File Purpose: Classes for the content elements
+
+File Notes:
+
+*********/
+
+/*-------------------------*\
+  #Hero
+\*-------------------------*/
+
+.hero {
+	overflow: hidden;
+
+	&_content {
+		letter-spacing: 0.05em;
+		padding: 0 $s-xs;
+	}
+
+	&-center {
+		.hero_content {
+			max-width: 40em;
+			width: $hundred;
+			margin: 0 auto;
+		}
+	}
+
+	&-left {
+		.hero_content {
+			max-width: $maxwidth;
+		}
+	}
+
+	&-dark {
+		color: $c-background;
+		background: $c-highlight-1;
+		@include antialias;
+	}
+
+}
+
+
+
+
+/*-------------------------*\
+  #ICP
+\*-------------------------*/
+
+.icp {
+
+	&_img {
+		width: $hundred;
+		max-width: 600px;
+	}
+
+	&-above {
+		.icp_inner {
+			max-width: 40em;
+			margin: 0 auto;
+		}
+	}
+
+	&-dark {
+		color: $c-background;
+		background: $c-highlight-1;
+		@include antialias;
+	}
+
+
+}
+
+
+
+
+
+/*-------------------------*\
+  #Content
+\*-------------------------*/
+
+.content {
+	&-dark {
+		color: $c-background;
+		background: $c-highlight-1;
+		@include antialias;
+	}
+}
+
+
+
+
+
+
+/*-------------------------*\
+  #Columns
+\*-------------------------*/
+
+.column {
+	max-width: 22em;
+	margin: $s-s auto;
+
+	&s {
+		&_inner {
+			margin: 0 auto;
+			max-width: $maxwidth;
+		}
+
+		&-dark {
+			color: $c-background;
+			background: $c-highlight-1;
+			@include antialias;
+		}
+	}
+}
+

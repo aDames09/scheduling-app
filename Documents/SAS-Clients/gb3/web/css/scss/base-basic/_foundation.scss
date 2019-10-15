@@ -1,0 +1,224 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Core Styles
+
+File Purpose: Basic styling served to all browsers
+
+File Notes:
+
+
+*********/
+
+
+/*-------------------------*\
+  #Document-Level
+\*-------------------------*/
+
+html {
+	-ms-text-size-adjust: $hundred;
+	-webkit-text-size-adjust: $hundred;
+}
+
+
+body {
+	@extend %primaryFont;
+	font-size: $mobile;
+	color: $c-primary;
+	margin: $s-xs;
+}
+
+
+
+
+
+/*-------------------------*\
+  #HTML5
+\*-------------------------*/
+
+article, aside, details, figcaption, figure, footer, header, main, nav, section, summary {
+	display: block;
+}
+
+
+audio, canvas, progress, video {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+
+[hidden], template {
+	display: none;
+}
+
+
+
+
+
+/*-------------------------*\
+  #Links
+\*-------------------------*/
+
+a {
+	text-decoration: none;
+	color: $c-highlight-1;
+
+	&:hover, &:focus, &:active {
+		color: $c-highlight-2;
+	}
+
+	&:focus {
+		outline: 0;
+	}
+
+	&:focus img {
+		border: 1px $c-highlight-2 solid;
+	}
+}
+
+
+
+
+
+/*-------------------------*\
+  #Headers
+\*-------------------------*/
+
+h1,h2,h3, h4 {
+	text-transform: uppercase;
+	line-height: $line-height;
+}
+
+h1 {
+	font-size: $xLarge;
+}
+
+h2 {
+	font-size: $large;
+}
+
+h3 {
+	font-size: $medium;
+	text-transform: none;
+}
+
+h4 {
+	font-size: $halfstep;
+}
+
+h5 {
+	font-size: $body;
+}
+
+
+
+
+
+/*-------------------------*\
+  #Block-Level-Content
+\*-------------------------*/
+
+p, ol, ul, li {
+	font-size: $body;
+}
+
+p {
+	margin-bottom: $baseline;
+}
+
+
+
+
+
+/*-------------------------*\
+  #Inline-Content
+\*-------------------------*/
+
+b, strong {
+	font-weight: bold;
+}
+
+//Abbreviation
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+//Definition term
+dfn, i {
+	font-style: italic;
+}
+
+//Marked text
+mark {
+	background: #ff0;
+	color: #000;
+}
+
+small {
+	font-size: $small;
+}
+
+
+
+
+
+/*-------------------------*\
+  #Grouping-Content
+\*-------------------------*/
+
+figure {
+	margin: $s-xs 40px;
+}
+
+
+hr {
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	width: $hundred;
+	height: 2px;
+	background: $c-primary;
+	border: none;
+}
+
+code, kbd, pre, samp {
+	font-family: monospace, monospace;
+	font-size: $body;
+}
+
+q, blockquote {
+  quotes: none;
+}
+
+blockquote{
+	font-style: italic;
+	margin: $s-xs $s-m;
+}
+
+q:before, q:after, blockquote:before, blockquote:after {
+	content: "";
+	content: none;
+}
+
+
+
+
+
+/*-------------------------*\
+  #Tables
+\*-------------------------*/
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+td, th {
+	padding: 0;
+}

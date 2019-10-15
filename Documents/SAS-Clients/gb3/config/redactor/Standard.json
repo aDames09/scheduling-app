@@ -1,0 +1,9 @@
+{
+  "buttons": ["undo", "formatting", "bold", "italic", "deleted", "unorderedlist", "orderedlist", "link", "image", "file", "html"],
+  "plugins": ["fullscreen", "alignment", "clips"],
+  "toolbarFixed": true,
+  "clips": [
+  	["Button link", "<a class='btn'>Link</a>"],
+  	["Lorem ipsum...", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex arcu, dignissim consequat enim sed, laoreet suscipit sapien. Nulla nec nunc scelerisque, semper nisl eu, laoreet nisl. Praesent sit amet mi eu tortor scelerisque fermentum quis eget dui. Fusce venenatis eleifend turpis sit amet consequat. Suspendisse efficitur, nibh eu maximus vulputate, turpis nisl faucibus magna, vel accumsan turpis elit at elit. Maecenas ut semper erat. Integer elementum pellentesque placerat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisis tempor augue non tincidunt. Phasellus arcu mi, varius sed porta quis, sagittis in arcu. Suspendisse ac euismod ipsum, vitae tincidunt magna. Aliquam euismod, dolor quis posuere blandit, dolor sapien tristique tellus, non ultrices eros eros id sapien. Aliquam in lacus non nibh viverra ultricies. Morbi varius libero nec nunc condimentum, quis hendrerit mi ullamcorper. Suspendisse vitae odio tellus."]
+  ]
+}

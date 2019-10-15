@@ -1,0 +1,72 @@
+{% set title = block.formTitle %}
+{% set form = block.form %}
+{% set content = block.formContent %}
+{% set position = block.formPositionOfContent %}
+{% set theme = block.formTheme %}
+{% set animation = block.formAnimation %}
+
+{% set animationClass = "" %}
+
+{% if animation != "none" %}
+	{% if animation == "fadeIn" %}
+		{% if position == "right" %}
+			{% set animationClass = 'data-aos=fade-left' %}
+		{% elseif position == "left" %}
+			{% set animationClass = 'data-aos=fade-right' %}
+		{% else %}
+			{% set animationClass = 'data-aos=fade' %}
+		{% endif %}
+	{% else %}
+		{% set animationClass = 'data-aos=fade-up' %}
+	{% endif %}
+{% endif %}
+
+{% set container = "" %}
+
+{% if position == 'above' %}
+	{% set container = "form_inner-s" %}
+{% elseif position == 'left' %}
+	{% set container = "form_inner" %}
+{% elseif position == 'right' %}
+	{% set container = "form_inner form_inner-right" %}
+{% endif %}
+
+<section class="form-{{ theme }} form_container">
+
+	
+
+	<div class="{{ container }}" {{ animationClass }}>
+
+		
+		<div class="form_content" >
+			
+			{% if title %}
+				<h2 class="h-center" >{{ title }}</h2>
+			{% endif %}
+			
+			{% if content %}
+				{{ content }}
+			{% endif %}
+
+		</div>
+		
+
+
+		<div class="form_form">
+
+			{# Use this if using a Sprout form {% if form %}
+				{% set formHandle = form.one().handle %}
+
+				{{ craft.sproutForms.displayForm( formHandle ) }}
+			{% endif %} #}
+
+			{# Use this if using a Third party form #}
+			 {% if form %}
+				{{ form|raw }}
+			{% endif %} 
+
+		</div>
+
+	</div>
+
+</section>

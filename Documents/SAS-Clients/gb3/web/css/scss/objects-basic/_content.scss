@@ -1,0 +1,123 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Content
+
+File Purpose: Classes for content elements
+
+File Notes:
+
+*********/
+
+
+/*-------------------------*\
+  #Hero
+\*-------------------------*/
+
+.hero {
+	color: $c-highlight-2;
+	padding: $s-l $s-xs;
+
+	&-center {
+		text-align: center;
+	}
+
+	&_img {
+		width: $hundred;
+	}
+
+	&_blurb {
+		margin-bottom: $s-xxs;
+	}
+
+}
+
+
+
+
+
+/*-------------------------*\
+  #Content
+\*-------------------------*/
+
+.content {
+	padding: $s-l $s-xs;
+}
+
+
+
+
+
+
+
+/*-------------------------*\
+  #ICP
+\*-------------------------*/
+
+.icp {
+
+	&_section {
+		padding: $s-l $s-xs;
+	}
+
+	&-above {
+		text-align: center;
+	}
+
+	&_title {
+		line-height: 1.2;
+		margin-bottom: $s-xxs;
+	}
+
+	&_imgcon {
+		text-align: center;
+		margin-bottom: $s-xs;
+	}
+
+}
+
+
+
+
+
+
+/*-------------------------*\
+  #Columns
+\*-------------------------*/
+
+.column {
+	padding: 0 $s-xs;
+	margin: $s-s auto;
+
+	&s {
+		&_inner {
+			padding: $s-l $s-xs;
+		}
+
+		&_title {
+			margin-bottom: 0;
+		}
+	}
+
+	&_img {
+		margin-bottom: $s-xs;
+	}
+}
+
+
+
+
+
+/*-------------------------*\
+  #404
+\*-------------------------*/
+
+.error {
+	text-align: center;
+
+	&_p {
+		padding: $s-l $s-xs;
+		margin: 0 auto;
+	}
+}

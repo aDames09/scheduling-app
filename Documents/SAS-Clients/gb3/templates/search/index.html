@@ -1,0 +1,112 @@
+{#
+ # Search results template
+ # ---------------
+ #}
+{% extends "_base" %}
+
+{% block content %}
+
+
+<section class="hero h-center">
+	<h1 class="hero_title-light">Search Results</h1>
+</section>
+
+
+
+<section class="l-container_s body" >
+
+	<form class="search_form" action="{{ url('search/') }}">
+		<label for="search" class="a-hide">Search</label>
+		<input type="search" id="search" class="search_input"name="q" placeholder="Search Here...">
+		<input type="submit" value="Submit" class="search_submit" />
+
+	</form>
+
+	<div class="results">
+		{% set query = craft.app.request.getParam('q') %}
+
+
+		{% paginate craft.entries({
+			search: query,
+			limit: 10
+		}) as pageInfo, pageEntries %}
+
+		{% if pageEntries|length > 0 %}
+			<div>
+			    <ul class="results_list" >
+			      {% for entry in pageEntries %}
+
+
+							{% set content = "" %}
+							{% if entry.introBlurb is not null and entry.introBlurb != "" %}
+									{% set content = entry.introBlurb %}
+							{% elseif entry.excerpt is not null and entry.excerpt != "" %}
+									{% set content = entry.excerpt %}
+							{% elseif entry.body is not null and entry.body != "" %}
+									{% set content = entry.body %}
+							{% elseif entry.contentOptions|length > 0 %}
+
+									{% set firstSection = entry.contentOptions.first() %}
+									{% set type = firstSection.type %}
+
+									{% if type == "standardContent" %}
+											{% set content = firstSection.contentContent %}
+									{% elseif type == "imageContentPair" %}
+											{% set content = firstSection.icpContent %}
+									{% elseif type == "columns" %}
+											{% set content = firstSection.columnsBlurb %}
+									{% elseif type == "form" %}
+											{% set content = firstSection.formContent %}
+									{% elseif type == "callToAction" %}
+											{% set content = firstSection.ctaText %}
+									{% endif %}
+
+							{% endif %}
+
+	            		<li class="results_item" >
+							<div class="results_top">
+		            			<a href="{{ entry.url|stripDomainFromString }}" class="results_link" >
+		            				{{ entry.title }}
+		            			</a>
+							</div>
+							{% if content != "" %}
+			                	<p class="results_blurb"> {{ content|striptags|slice(0, 200)|convert_encoding('UTF-8', 'HTML-ENTITIES') }}{% if content|striptags|length > 199 %}...{% endif %}</p>
+							{% endif %}
+	            		</li>
+		        	{% endfor %}
+			    </ul>
+
+			    {% if pageInfo.nextUrl or pageInfo.prevUrl %}
+					<nav class="pagination">
+						<h3 class="a-hide">Pagination</h3>
+
+						<ul class="pagination_list">
+							{% if pageInfo.prevUrl %}
+								<li class="pagination_item pagination_first"><a href="{{ pageInfo.firstUrl|stripDomainFromString }}?q={{query}}">First</a></li>
+							{% endif %}
+
+							{% for page, url in pageInfo.getPrevUrls(1) %}
+								<li class="pagination_item"> <a href="{{ url|stripDomainFromString }}?q={{query}}">{{ page }}</a></li>
+							{% endfor %}
+
+							<li class="pagination_item pagination_item-cur">{{ pageInfo.currentPage }}</li>
+
+							{% for page, url in pageInfo.getNextUrls(3) %}
+								<li class="pagination_item"> <a href="{{ url|stripDomainFromString }}?q={{query}}">{{ page }}</a></li>
+							{% endfor %}
+
+							{% if pageInfo.nextUrl %}
+								<li class="pagination_item pagination_last"><a href="{{ pageInfo.lastUrl|stripDomainFromString }}?q={{query}}">Last</a></li>
+							{% endif %}
+						</ul>
+					</nav>
+				{% endif %}
+
+			</div>
+		{% else %}
+		    <p class="noresults">Your search for “{{ query }}” didn’t return any results.</p>
+		{% endif %}
+	</div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% set title = block.contentTitle %}
+{% set content = block.contentContent %}
+{% set alignment = block.contentAlignment %}
+{% set theme = block.contentTheme %}
+{% set animation = block.contentAnimationStyle %}
+
+{% set animationClass = "" %}
+
+{% if animation != "none" %}
+	{% if animation == "fadeIn"%}
+		{% set animationClass = 'data-aos=fade-left' %}
+	{% elseif animation == "fadeUp" %}
+		{% set animationClass = 'data-aos=fade-up' %}
+	{% else %}
+		{% set animationClass = 'data-aos=fade' %}
+	{% endif %}
+{% endif %}
+
+
+<section class="content content-{{ theme }} h-{{ alignment }}">
+	<div class="l-container_s" {{ animationClass }}>
+
+		{% if title %}
+			<h2>{{ title }}</h2>
+		{% endif %}
+
+		<div>{{ content }}</div>
+
+	</div>
+</section>

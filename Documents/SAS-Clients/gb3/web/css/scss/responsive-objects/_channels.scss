@@ -1,0 +1,61 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Channels Responsive
+
+File Purpose: Classes for the channel elements
+
+File Notes:
+
+*********/
+
+
+
+@media only screen and (min-width: 600px) {
+
+	/*-------------------------*\
+	  #Archive
+	\*-------------------------*/
+
+	.archive {
+		&_entries {
+			display: flex;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+		}
+
+		&_entry {
+			width: $hundred/3;
+		}
+	}
+
+}
+
+
+@media only screen and (min-width: 850px) {
+
+	/*-------------------------*\
+	  #Archive
+	\*-------------------------*/
+
+	.archive {
+		&_container {
+			display: flex;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex-wrap: nowrap;
+		}
+
+		&_entries {
+			padding-right: $s-s;
+			width: 75%;
+		}
+
+		&_aside {
+			width: 25%;
+		}
+	}
+
+}

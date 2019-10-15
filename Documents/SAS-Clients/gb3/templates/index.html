@@ -1,0 +1,35 @@
+{#
+ # Homepage template
+ # ---------------
+ #}
+
+{% extends "_base" %}
+
+
+{% block content %}
+	
+	{% include "_snippets/header.html" with {
+		'title' : entry.title,
+		'customTitle' : entry.customTitle,
+		'blurb' : entry.blurb,
+		'alignment' : entry.alignment,
+		'image' : entry.featuredImage.one(),
+		'theme' : entry.headerTheme
+	} %}
+
+	<section class="conten">
+		<div class="l-container_s">
+
+			{% if entry.headline %}
+				<h2>{{ entry.headline }}</h2>
+			{% endif %}
+
+			{{ entry.body }}
+
+		</div>
+	</section>
+		
+	<div class="lazyload" data-script="{{ siteUrl }}js/animate.min.js" >{% include "_snippets/content.html" %}</div>
+
+
+{% endblock %}

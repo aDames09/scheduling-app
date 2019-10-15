@@ -1,0 +1,40 @@
+{
+    "name": "billymedia/sasutils",
+    "description": "SAS Utils",
+    "type": "craft-plugin",
+    "version": "1",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "sasutils"
+    ],
+    "support": {
+        "docs": "",
+        "issues": ""
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Billy Patel",
+            "homepage": "https://billymedia.co.uk"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "billymedia\\sasutils\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "SASUtils",
+        "handle": "sasutils",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "",
+        "class": "billymedia\\sasutils\\SASUtils"
+    }
+}

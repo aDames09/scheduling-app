@@ -1,0 +1,10 @@
+{#
+ # Page w/ Third Party Code template
+ # ---------------
+ #}
+
+<div class="lazyload" data-script="{{ siteUrl }}js/animate.min.js" >{% include "_snippets/content.html" %}</div>
+
+{% if entry.thirdPartyCode %}
+	{{ entry.thirdPartyCode|raw }}
+{% endif %}

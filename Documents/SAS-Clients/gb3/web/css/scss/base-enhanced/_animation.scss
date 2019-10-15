@@ -1,0 +1,56 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Animation
+
+File Purpose: CSS for the AOS Library
+
+File Notes:
+- Works with https://michalsnik.github.io/aos/
+- Review origanal AOS style sheets for additional animation styles
+
+*********/
+
+$aos-distance: 100px !default;
+
+.animate-enabled {
+
+	/*-------------------------*\
+		#Core
+	\*-------------------------*/
+
+	[data-aos] {
+		transition-duration: 1000ms;
+	}
+
+
+
+	/*-------------------------*\
+		#Fade
+	\*-------------------------*/
+
+	[data-aos^='fade'][data-aos^='fade'] {
+		opacity: 0;
+		transition: opacity, transform;
+		transition-timing-function: ease, cubic-bezier(.250, .250, .750, .750);
+
+		&.aos-animate {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
+	[data-aos='fade-up'] {
+		transform: translate3d(0, $aos-distance, 0);
+	}
+
+	[data-aos='fade-right'] {
+		transform: translate3d(-$aos-distance, 0, 0);
+	}
+
+	[data-aos='fade-left'] {
+		transform: translate3d($aos-distance, 0, 0);
+	}
+
+}

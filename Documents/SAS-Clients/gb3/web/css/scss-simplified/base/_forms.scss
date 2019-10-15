@@ -1,0 +1,196 @@
+/********
+
+Siren Framework v3.5
+
+File Name: Forms
+
+File Purpose: The standard echanced stylings for form elements.
+
+File Notes:
+
+*********/
+
+
+/*-------------------------*\
+	#Form-Containers
+\*-------------------------*/
+
+.form {
+
+	&_container {
+		padding: $s-l $s-xs;
+	}
+
+	&_inner {
+		margin: 0 auto;
+		max-width: $maxwidth;
+
+		&-s {
+			margin: 0 auto;
+			max-width: 40em;
+		}
+	}
+
+	&-dark {
+		color: $c-background;
+		background: $c-highlight-1;
+		@include antialias;
+	}
+}
+
+form, fieldset {
+	border: none;
+	margin: $s-xs 0;
+	width: $hundred;
+	clear: both;
+	overflow: hidden;
+}
+
+label {
+	font-size: $small;
+	text-transform: uppercase;
+}
+
+
+
+
+
+
+/*-------------------------*\
+	#Inputs-Selects-Textarea
+\*-------------------------*/
+input, textarea, select {
+	color: $c-primary;
+	font-size: $body;
+	border: 1px $c-primary solid;
+	outline: 0;
+	border-radius: 0;
+	padding: $s-xxs;
+	width: $hundred;
+	appearance: none;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Select
+\*-------------------------*/
+select {
+	background: url(../images/icon-down-dark.svg) no-repeat 97% center;
+	cursor: pointer;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Textarea
+\*-------------------------*/
+
+textarea {
+	height: $s-xxxl;
+	resize: none;
+	overflow: auto;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Checkboxes-Radiobuttons
+\*-------------------------*/
+
+input[type="checkbox"], input[type="radio"] {
+	padding: 0;
+}
+
+.checkbox_label, .checkbox {
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	float: none;
+	display: inline;
+}
+
+
+
+
+/*-------------------------*\
+	#Special-Inputs
+\*-------------------------*/
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+input[type="search"] {
+	-webkit-appearance: textfield;
+}
+
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Submit-Buttons
+\*-------------------------*/
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+	overflow: visible;
+}
+
+button[disabled], html input[disabled] {
+	cursor: default;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+
+input[type="submit"], button {
+	font-size: $small;
+	letter-spacing: 0.05em;
+	font-weight: bold;
+	color: $c-background;
+	background: $c-highlight-1;
+	transition: all 0.3s;
+	width: auto;
+	display: inline-block;
+
+	@include antialias;
+
+	&:hover, &:focus{
+		background: $c-highlight-2;
+	}
+}
+
+
+
+
+/*-------------------------*\
+	#Search
+\*-------------------------*/
+
+.search {
+
+	&_form {
+		max-width: 30em;
+		margin: 0 auto $s-l;
+		display: flex;
+	}
+
+}

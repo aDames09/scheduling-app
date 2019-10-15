@@ -1,0 +1,89 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Enhanced Core Styles
+
+File Purpose: Element styling on top of basic style sheet (base-basic/_foundation.scss)
+
+File Notes:
+
+*********/
+
+
+/*-------------------------*\
+	#Document-Level
+\*-------------------------*/
+
+
+html, *, *:before, *:after {
+	box-sizing: border-box;
+}
+
+
+body {
+	margin: 0;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Block-Level-Content
+\*-------------------------*/
+p {
+	max-width: 48em;
+}
+
+
+img {
+	max-width: $hundred;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Inline-Content
+\*-------------------------*/
+
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Embeded-Content
+\*-------------------------*/
+
+svg:not(:root) {
+	overflow: hidden;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Grouping-Content
+\*-------------------------*/
+
+pre {
+	overflow: auto;
+}

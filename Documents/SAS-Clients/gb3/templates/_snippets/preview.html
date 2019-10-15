@@ -1,0 +1,48 @@
+{#
+ # Editorial Post Preview template
+ # ---------------
+ #}
+
+ <article class="preview">
+
+ 	{% if image %}
+ 		<img data-src="{{ craft.imager.transformImage( image, { width: 300, height: 200 } ).url }}" alt="" class="preview_img lazyload" >
+ 	{% endif %}
+
+ 	<div class="preview_header">
+    {% if categories|length > 0 %}
+   		<div class="preview_tax">
+   			{% for cat in categories %}
+   				<a href="{{ cat.url }}">
+   					{{ cat.title }}
+   				</a>
+
+   				{% if not loop.last %}, {% endif %}
+
+   			{% endfor %}
+   		</div>
+    {% endif %}
+
+ 		<h2 class="preview_title">
+ 			<a href="{{ url }}" rel="bookmark">{{ title }}</a>
+ 		</h2>
+
+
+ 	</div>
+
+ 	<div class="preview_content">
+ 		{% if excerpt %}
+ 			<p>{{ excerpt }}</p>
+ 		{% else %}
+ 			<p>{{ body|striptags|slice(0, 200) }}...</p>
+ 		{% endif %}
+ 		<div><a href="{{ url }}" class="btn">
+      {% if linkText and linkText != "" %}
+				{{ linkText }}
+			{% else %}
+				Read More
+			{% endif %}
+    </a></div>
+ 	</div>
+
+</article>

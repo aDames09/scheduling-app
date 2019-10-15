@@ -1,0 +1,223 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Header and Footer Enhanced
+
+File Purpose: Classes for the header and footer elements
+
+File Notes:
+  	- The header is designed to be a hamburger menu for the mobile view
+	- The footer is kept simple by default
+
+*********/
+
+
+/*-------------------------*\
+  #Header
+\*-------------------------*/
+
+.siteheader {
+	background: $c-background;
+	text-align: left;
+	padding: 0;
+	overflow: hidden;
+}
+
+
+
+
+
+
+/*-------------------------*\
+  #Title
+\*-------------------------*/
+
+.title {
+	font-size: $s-xs;
+	padding: $s-s;
+	max-width: 70%;
+}
+
+
+
+
+
+
+
+/*-------------------------*\
+  #Navigation
+\*-------------------------*/
+
+.nav-primary {
+	background: $c-highlight-2;
+	overflow: hidden;
+	transition: max-height 0.5s;
+	@include antialias;
+
+	.navigation-enabled & {
+		margin: 0em;
+		max-height: 0;
+
+		&.s-nav-active {
+			max-height: 1000px;
+		}
+	}
+
+	&_list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		overflow: hidden;
+
+		ul {
+			li {
+				padding-left: $s-l;
+			}
+		}
+	}
+
+	a {
+		letter-spacing: $letter-spacing;
+		color: $c-background;
+		padding: $s-xs $s-s;
+		display: block;
+		cursor: pointer;
+
+		&:hover, &:focus {
+			color: $c-background;
+			background: $c-highlight-1;
+		}
+	}
+
+	li {
+		margin: 0;
+	}
+
+
+	&_btn {
+		text-indent: -999999px;
+		background: url(../images/menu.svg) no-repeat center center!important;
+		border: none;
+		outline: none;
+		height: 25px;
+		width: 25px;
+		position: absolute;
+		top: $s-s;
+		right: $s-m;
+		cursor: pointer;
+
+		&.s-active {
+			background: url(../images/close.svg) no-repeat center center;
+		}
+	}
+
+}
+
+
+
+
+/*-------------------------*\
+  #Footer
+\*-------------------------*/
+
+.footer {
+	text-align: center;
+	margin-top: $baseline;
+	background: $c-highlight-1;
+	color: $c-background;
+	padding: 0;
+	overflow: hidden;
+	@include antialias;
+
+	&_content {
+		max-width: $maxwidth;
+		margin: 0 auto;
+	}
+
+	a {
+		color: $c-secondary;
+
+		&:hover, &:focus {
+			color: darken($c-secondary, 15%);
+		}
+	}
+
+	&_col {
+		border-bottom: 1px solid darken($c-highlight-1, 15%);
+		padding: $s-l $s-xs;
+		margin: 0;
+		margin-bottom: $s-s;
+	}
+
+	&_legal {
+		background: $c-primary;
+		padding: $s-xs;
+
+		* {
+			display: inline-block;
+		}
+	}
+
+	h3 {
+		margin: 0 0 $s-xxs;
+	}
+
+}
+
+.copyright {
+	margin: 0 $s-xxs;
+}
+
+.legal {
+	li {
+		margin: 0 $s-xxs;
+	}
+}
+
+.social_link {
+	padding: 0 $s-xxs;
+}
+
+
+
+
+
+/*-------------------------*\
+  #Sitemap
+\*-------------------------*/
+
+.sitemap, .legal {
+
+	font-size: $small;
+
+	&_list, &_list ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	a {
+		color: $c-secondary;
+		font-weight: bold;
+		padding: $s-xxs $s-xs;
+		display: block;
+
+		&:hover, &:focus {
+			color: darken($c-secondary, 15%);
+		}
+	}
+
+	li {
+		margin: $s-xxs 0;
+	}
+
+	&_list-sub {
+		.sitemap_link {
+			color: darken($c-highlight-1, 15%);
+			font-weight: lighter;
+		}
+
+	}
+
+}

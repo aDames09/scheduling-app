@@ -1,0 +1,104 @@
+/********
+
+Siren Framework v5.0
+
+File Name: UI Enhanced
+
+File Purpose: Classes for the UI elements
+
+File Notes:
+
+*********/
+
+/*-------------------------*\
+  #Buttons
+\*-------------------------*/
+
+.btn, .btn_container a {
+	border: $c-highlight-2 2px solid;
+	padding: $s-xs $s-s;
+  	display: inline-block;
+  	transition: 0.3s all;
+  	@include antialias;
+
+	&:focus, &:hover, &:active {
+	  	color: $c-background!important;
+	  	background: $c-highlight-1;
+	}
+
+}
+
+
+
+
+
+
+/*-------------------------*\
+  #CTA
+\*-------------------------*/
+
+.cta {
+	max-height: 500px;
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+
+	&_link {
+		transition: 0.3s all;
+		display: block;
+		cursor: pointer;
+	}
+
+	&:hover, &:focus {
+		.btn {
+			color: $c-background!important;
+	  		background: $c-highlight-1;
+		}
+	}
+
+	&-dark {
+		color: $c-background;
+		background: $c-highlight-1;
+		@include antialias;
+	}
+
+	&-dark &_link {
+		color: $c-background!important;
+
+		&:hover, &:focus {
+			.btn {
+				color: $c-highlight-1!important;
+				background: $c-background;
+			}
+		}
+	}
+
+	&_container {
+		margin: 0;
+	}
+
+	img, picture {
+		width: $hundred;
+		outline: none;
+	}
+
+	&_title {
+		margin-bottom: $s-xs;
+	}
+
+	&_inner {
+		text-align: center;
+		padding: $s-xxl $s-xs;
+		margin: 0 auto;
+		max-width: 40em;
+	}
+
+	&_content {
+		margin: $s-xxs auto $s-xs;		
+	}
+
+
+
+
+}

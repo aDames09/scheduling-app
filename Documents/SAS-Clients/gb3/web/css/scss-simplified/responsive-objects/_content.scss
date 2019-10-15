@@ -1,0 +1,176 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Responsive for Content
+
+File Purpose: Media query calls go here for content objects
+
+File Notes:
+
+
+*********/
+
+@media only screen and (min-width: 600px) {
+
+
+	/*-------------------------*\
+	  #ICP
+	\*-------------------------*/
+
+	.icp {
+
+		&-right, &-left {
+			.icp_inner {
+				overflow: hidden;
+			}
+
+			.icp_imgcon, .icp_content {
+				width: $hundred/2;
+				padding: 0 $s-xs;
+				margin: 0;
+				float: left;
+			}
+		}
+
+
+		&-right, &-left {
+			.icp_inner {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				overflow: visible;
+			}
+
+			.icp_imgcon, .icp_content {
+				float: none;
+			}
+		}
+
+		&-right .icp_inner {
+			flex-direction: row-reverse;
+		}
+
+
+		.icp_imgcon, .icp_content {
+			width: $hundred/2;
+			padding: 0 $s-xs;
+			margin: 0;
+			float: left;
+		}
+
+	}
+
+
+
+	/*-------------------------*\
+	  #Columns
+	\*-------------------------*/
+
+	.column {
+
+		&_col {
+			padding: 0 $s-xxs;
+			margin-bottom: $s-s;
+
+			&-qtr {
+				width: 50%;
+			}
+
+			&-thrd {
+				width: $hundred/3;
+			}
+			
+		}
+
+		&s {
+			&_inner {
+				padding: $s-l $s-xxs;
+				display: flex;
+				align-items: flex-start;
+				justify-content: flex-start;
+				flex-wrap: wrap;
+			}
+
+		}
+	}
+
+
+
+
+
+	/*-------------------------*\
+		#Form-Container
+	\*-------------------------*/
+
+	.form {
+
+		&_inner {
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+
+			&-right {
+				flex-direction: row-reverse;
+
+				.form_content {
+					padding-left: $s-s;
+					padding-right: 0;
+				}
+			}
+
+
+			&-s {
+				display: block;
+
+				.form_content, .form_form {
+					width: 100%;
+					padding: 0;
+				}
+
+				.form_content {
+					margin-bottom: $s-s;
+				}
+			}
+		}
+
+		&_content, &_form {
+			width: 50%;
+		}
+
+		&_content {
+			padding-right: $s-s;
+		}
+	}
+
+
+
+}
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 850px) {
+
+	/*-------------------------*\
+	  #Columns
+	\*-------------------------*/
+
+	.column {
+
+		&_col {
+
+			&-qtr {
+				width: 25%;
+			}
+			
+		}
+	}
+
+
+
+}

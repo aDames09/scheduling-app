@@ -1,0 +1,147 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Forms
+
+File Purpose: The standard echanced stylings for form elements.
+
+File Notes:
+
+*********/
+
+
+/*-------------------------*\
+	#Form-Containers
+\*-------------------------*/
+
+form, fieldset{
+	width: $hundred;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Form-Container
+\*-------------------------*/
+
+.form {
+
+	&_inner {
+		margin: 0 auto;
+		max-width: $maxwidth;
+
+		&-s {
+			margin: 0 auto;
+			max-width: 40em;
+		}
+	}
+
+	&-dark {
+		color: $c-background;
+		background: $c-highlight-1;
+		@include antialias;
+	}
+}
+
+
+
+
+
+
+
+/*-------------------------*\
+	#Inputs-Selects-Textarea
+\*-------------------------*/
+input, textarea, select {
+	outline: 0;
+	border-radius: 0;
+	width: $hundred;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Textarea
+\*-------------------------*/
+
+textarea {
+	height: $s-xxxl;
+	resize: none;
+	overflow: auto;
+}
+
+
+
+
+/*-------------------------*\
+	#Select
+\*-------------------------*/
+select {
+	background: url(../images/icon-down-dark.svg) no-repeat 97% center;
+	cursor: pointer;
+	appearance: none;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Checkboxes-Radiobuttons
+\*-------------------------*/
+
+input[type="checkbox"], input[type="radio"] {
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	float: none;
+	display: inline;
+}
+
+
+
+
+
+/*-------------------------*\
+	#Submit-Buttons
+\*-------------------------*/
+
+input[type="submit"], button {
+	font-size: $small;
+	letter-spacing: 0.05em;
+	font-weight: bold;
+	color: $c-background;
+	background: $c-highlight-1;
+	transition: all 0.3s;
+	width: auto;
+	display: inline-block;
+
+	@include antialias;
+
+	&:hover, &:focus{
+		background: $c-highlight-2;
+	}
+}
+
+
+
+
+
+/*-------------------------*\
+	#Search
+\*-------------------------*/
+
+.search {
+
+	&_form {
+		max-width: 30em;
+		display: flex;
+	}
+
+}

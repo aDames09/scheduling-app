@@ -1,0 +1,44 @@
+/********
+
+Siren Framework 5.0
+
+File Name: UI
+
+File Purpose: Classes for UI elements
+
+File Notes:
+
+*********/
+
+
+/*-------------------------*\
+  #BTN
+\*-------------------------*/
+
+.btn, .btn_container a {
+	font-size: $small;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 0.1em;
+}
+
+
+
+
+
+/*-------------------------*\
+  #CTA
+\*-------------------------*/
+
+.cta {
+	padding: $s-l $s-xs;
+
+	&_title {
+		font-size: $large;
+	}
+
+	&_content {
+		font-size: $halfstep;
+	}
+
+}

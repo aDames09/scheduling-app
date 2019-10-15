@@ -1,0 +1,5 @@
+{% if image.getExtension() != "svg" %}
+<img {{ lazyAttr }}srcset="{{ craft.imager.transformImage( image, { width: 400, height: 400, mode: 'fit' } ).url }} 400w, {{ craft.imager.transformImage( image, { width: 600, height: 600, mode: 'fit' } ).url }} 600w, {{ craft.imager.transformImage( image, { width: 800, height: 800, mode: 'fit' } ).url }} 800w" alt="{{ image.title }}" class="{{ lazyClass }}" >
+{% else %}
+<img {{ lazyAttr }}src="{{ image.getUrl() }}" alt="{{ image.title }}" class="{{ lazyClass }}">
+{% endif %}

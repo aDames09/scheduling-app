@@ -1,0 +1,43 @@
+{
+    "name": "billymedia/pushdb",
+    "description": "Clones a database from source to destination",
+    "type": "craft-plugin",
+    "version": "1.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "pushdb"
+    ],
+    "support": {
+        "docs": "???",
+        "issues": "???"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Billy Patel",
+            "homepage": "https://billymedia.co.uk"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "billymedia\\pushdb\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Pushdb",
+        "handle": "pushdb",
+        "hasCpSettings": false,
+        "hasCpSection": true,
+        "changelogUrl": "???",
+        "components": {
+            "pushdbService": "billymedia\\pushdb\\services\\PushdbService"
+        },
+        "class": "billymedia\\pushdb\\Pushdb"
+    }
+}

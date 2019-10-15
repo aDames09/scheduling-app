@@ -1,0 +1,25 @@
+{#
+ # Legal\ template
+ # ---------------
+ #}
+
+{% extends "_base" %}
+
+{% block content %}
+
+<div class="content">
+	<article class="l-container-s">
+		<h1>{{ entry.title }}</h1>
+
+		{{ entry.body }}
+
+		{% if entry.thirdPartyCode %}
+			<hr/>
+			<div>
+				{{ entry.thirdPartyCode|raw }}
+			</div>
+		{% endif %}
+	</article>
+</div>
+
+{% endblock %}

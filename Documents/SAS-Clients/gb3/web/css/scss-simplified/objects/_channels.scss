@@ -1,0 +1,202 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Blog Enhanced
+
+File Purpose: Classes for the blog elements
+
+File Notes:
+
+*********/
+
+/*-------------------------*\
+  #Archive
+\*-------------------------*/
+
+.archive {
+	&_container {
+		padding: 0 $s-xs;
+		margin: 0 auto;
+		max-width: $maxwidth;
+	}
+}
+
+
+/*-------------------------*\
+  #Preview
+\*-------------------------*/
+
+.preview {
+	padding: 0 $s-xs;
+	margin-bottom: $s-l;
+	max-width: 400px;
+
+	&_title {
+		font-size: $halfstep;
+		margin: $s-xs 0;
+	}
+
+	&_meta {
+		font-size: $small;
+	}
+
+	&_content {
+		p {
+			margin: $s-s 0;
+		}
+	}
+}
+
+
+
+
+
+/*-------------------------*\
+  #Article
+\*-------------------------*/
+
+.article {
+	margin: $s-s 0;
+	padding: 0 $s-xs;
+
+	&_header {
+		margin-bottom: $s-s;
+	}
+
+	&_title {
+		font-size: $xLarge;
+		margin: 0;
+	}
+
+	&_meta {
+		font-size: $small;
+	}
+
+	a {
+		color: $c-highlight-1;
+
+		&:hover, &:focus, &:active {
+		    color: $c-highlight-2;
+		}
+	}
+
+	&_img {
+		width: $hundred;
+	}
+
+}
+
+
+
+
+
+/*-------------------------*\
+  #Tax-Nav
+\*-------------------------*/
+
+.nav-tax {
+	letter-spacing: 0.05em;
+	border-top: 2px solid $c-highlight-1;
+	padding: $s-xxs 0;
+	margin: 0.25em $s-xs $s-s;
+
+	&_title {
+		color: $c-highlight-1;
+		font-size: $body;
+		font-weight: 700;
+		margin: 0 0 0.75em;;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	li {
+		border-bottom: 1px $c-highlight-1 solid;
+		padding: 0.25em 0;
+
+		&:last-child {
+			border: none;
+		}
+	}
+
+	a {
+		color: $c-highlight-1;
+
+		&:hover, &:focus, &:active {
+		    color: $c-highlight-2;
+		}
+	}
+}
+
+
+
+
+
+
+/*-------------------------*\
+  #Pagination
+\*-------------------------*/
+
+.pagination {
+	text-transform: uppercase;
+	text-align: center;
+	color: $c-background;
+	background: $c-highlight-2;
+	padding: $s-xs;
+	margin: $s-xs $s-xs $s-l;
+	@include antialias;
+
+	a {
+		color: $c-background;
+
+		&:focus, &:hover, &:active {
+			color: $c-secondary;
+		}
+
+	}
+
+	&_list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	&_item {
+		margin: 0;
+		display: inline-block;
+
+		&:after {
+			content:"|";
+			color: $c-background;
+			margin: 0 0.25em 0 $s-xxs;
+		}
+
+		&:last-child:after {
+			display: none;
+		}
+	}
+
+}
+
+
+
+
+
+/*-------------------------*\
+  #Not Found
+\*-------------------------*/
+.notfound {
+	text-align: center;
+	padding: $s-s $s-xs;
+
+	p {
+		margin: $s-xs auto;
+	}
+}

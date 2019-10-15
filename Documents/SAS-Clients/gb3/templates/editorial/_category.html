@@ -1,0 +1,105 @@
+{#
+ # News Categories template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/news is
+ # requested, because it is located at news/index.html in your
+ # craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_base" %}
+
+
+{% block content %}
+
+    {% set archive = craft.entries.section('editorialArchive').one() %}
+
+    {% include "_snippets/header.html" with {
+		'title' : archive.title,
+		'customTitle' : archive.customTitle,
+		'blurb' : category,
+		'alignment' : archive.alignment,
+		'image' : archive.featuredImage.one(),
+		'theme' : archive.headerTheme
+	} %}
+	
+	<div class="archive_container">
+
+		<section class="archive_entries">
+
+			{% paginate craft.entries.section('editorial').relatedTo(category).limit(20) as pageInfo, entriesOnPage %}
+
+			{% if entriesOnPage|length > 0 %}
+
+				{% for entry in entriesOnPage %}
+
+					<div class="archive_entry">
+
+			            {% include "_snippets/preview.html" with {
+			                'image': entry.featuredImage.one(),
+			                'categories': entry.categories.all(),
+			                'url': entry.url,
+			                'title': entry.title,
+			                'excerpt': entry.excerpt,
+			                'body': entry.body,
+			                'linkText': 'Read More'
+			            } %}
+
+					</div>
+
+				{% endfor %}
+
+				{% if pageInfo.nextUrl or pageInfo.prevUrl %}
+					<nav class="pagination">
+						<h3 class="a-hide">Pagination</h3>
+
+						<ul class="pagination_list">
+							{% if pageInfo.prevUrl %}
+								<li class="pagination_item pagination_first"><a href="{{ pageInfo.firstUrl }}">First</a></li>
+							{% endif %}
+
+							{% for page, url in pageInfo.getPrevUrls(1) %}
+								<li class="pagination_item"> <a href="{{ url }}">{{ page }}</a></li>
+							{% endfor %}
+
+							<li class="pagination_item pagination_item-cur">{{ pageInfo.currentPage }}</li>
+
+							{% for page, url in pageInfo.getNextUrls(3) %}
+								<li class="pagination_item"> <a href="{{ url }}">{{ page }}</a></li>
+							{% endfor %}
+
+							{% if pageInfo.nextUrl %}
+								<li class="pagination_item pagination_last"><a href="{{ pageInfo.lastUrl}}">Last</a></li>
+							{% endif %}
+						</ul>
+
+					</nav>
+				{% endif %}
+			{% else %}
+				<p class="noresults">No entries were found.</p>
+			{% endif %}
+
+		</section>
+
+		<div class="archive_aside">
+			<aside class="sidebar">
+				<nav class="nav-tax">
+					<ul class="nav-tax_list">
+
+						{% nav category in craft.categories.group('categories').all() %}
+							<li class="nav-tax_item" >
+								<a href="{{ category.url }}" class="nav-tax_link" >{{ category.title }}</a>
+							</li>
+						{% endnav %}
+
+					</ul>
+				</nav>
+			</aside>
+		</div>
+
+	</div>
+
+{% endblock %}

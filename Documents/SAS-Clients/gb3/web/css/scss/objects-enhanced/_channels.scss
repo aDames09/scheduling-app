@@ -1,0 +1,97 @@
+/********
+
+Siren Framework v5.0
+
+File Name: Channels Enhanced
+
+File Purpose: Classes for the channels elements
+
+File Notes:
+
+*********/
+
+
+
+/*-------------------------*\
+  #Archive
+\*-------------------------*/
+
+.archive {
+	&_container {
+		margin: 0 auto;
+		max-width: $maxwidth;
+	}
+}
+
+
+
+
+
+
+/*-------------------------*\
+  #Preview
+\*-------------------------*/
+
+.preview {
+	max-width: 400px;
+}
+
+
+
+
+
+
+/*-------------------------*\
+  #Pagination
+\*-------------------------*/
+
+.pagination {
+	color: $c-background;
+	background: $c-highlight-2;
+	padding: $s-xs;
+	margin: $s-xs $s-xs $s-l;
+	@include antialias;
+
+	a {
+		color: $c-background;
+
+		&:focus, &:hover, &:active {
+			color: $c-secondary;
+		}
+
+	}
+
+	&_list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	&_item {
+		margin: 0;
+		display: inline-block;
+
+		&:after {
+			content:"|";
+			color: $c-background;
+			margin: 0 0.25em 0 $s-xxs;
+		}
+
+		&:last-child:after {
+			display: none;
+		}
+	}
+
+}
+
+
+
+
+
+/*-------------------------*\
+  #Not Found
+\*-------------------------*/
+
+.notfound p {
+	margin: $s-xs auto;
+}
