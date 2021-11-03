@@ -43,7 +43,7 @@
     "moment": "^2.18.1",
     "preact-compat": "^3.16.0",
     "preact-redux": "^2.0.1",
-    "validator": "^7.0.0",
+    "validator": "^13.7.0",
     "rimraf": "^2.6.2"
   }
 }
